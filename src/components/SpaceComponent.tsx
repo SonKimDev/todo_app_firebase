@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 
 interface Props {
@@ -7,8 +7,7 @@ interface Props {
 }
 
 export default function SpaceComponent(props: Props) {
+  const {width, height} = props;
 
-  const { width, height } = props;
-
-  return <View style={{width, height}}/>;
+  return <View style={{width, height}} />;
 }

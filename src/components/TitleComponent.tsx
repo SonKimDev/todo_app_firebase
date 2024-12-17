@@ -1,6 +1,6 @@
 import React from 'react';
 import TextComponent from './TextComponent';
-import { fontFamilies } from '../constants/fontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 
 interface Props {
   text: string;
@@ -10,8 +10,14 @@ interface Props {
 }
 
 export default function TitleComponent(props: Props) {
+  const {text, size, font, color} = props;
 
-  const { text, size, font, color } = props;
-
-  return <TextComponent text={text} size={size ?? 20} font={font ?? fontFamilies.semiBold} color={color}/>;
+  return (
+    <TextComponent
+      text={text}
+      size={size ?? 20}
+      font={font ?? fontFamilies.semiBold}
+      color={color}
+    />
+  );
 }
