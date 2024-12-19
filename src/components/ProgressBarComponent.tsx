@@ -4,7 +4,7 @@ import {colors} from '../constants/colors';
 import RowComponent from './RowComponent';
 import SpaceComponent from './SpaceComponent';
 import TextComponent from './TextComponent';
-import { fontFamilies } from '../constants/fontFamilies';
+import {fontFamilies} from '../constants/fontFamilies';
 
 interface Props {
   size?: 'small' | 'default' | 'large';
@@ -38,7 +38,7 @@ export default function ProgressBarComponent(props: Props) {
       <SpaceComponent height={4} />
       <RowComponent justifyContent="space-between">
         <TextComponent text="Progress" size={12} />
-        <TextComponent text={`${percent}`} size={12} font={fontFamilies.bold}/>
+        <TextComponent text={`${percent}`} size={12} font={fontFamilies.bold} />
       </RowComponent>
     </View>
   );
