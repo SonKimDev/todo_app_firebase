@@ -7,22 +7,22 @@ import {
 } from 'iconsax-react-native';
 import React from 'react';
 import {Pressable, TouchableOpacity, View} from 'react-native';
-import CardComponent from '../components/CardComponent';
-import Container from '../components/Container';
-import RowComponent from '../components/RowComponent';
-import SectionComponent from '../components/SectionComponent';
-import TextComponent from '../components/TextComponent';
-import TitleComponent from '../components/TitleComponent';
-import {colors} from '../constants/colors';
-import {globalStyles} from '../styles/globalStyles';
-import TagComponent from '../components/TagComponent';
-import SpaceComponent from '../components/SpaceComponent';
-import CircularComponent from '../components/CircularComponent';
-import CardImageContainer from '../components/CardImageContainer';
-import AvatarGroup from '../components/AvatarGroup';
-import ProgressBarComponent from '../components/ProgressBarComponent';
+import CardComponent from '../../components/CardComponent';
+import Container from '../../components/Container';
+import RowComponent from '../../components/RowComponent';
+import SectionComponent from '../../components/SectionComponent';
+import TextComponent from '../../components/TextComponent';
+import TitleComponent from '../../components/TitleComponent';
+import {colors} from '../../constants/colors';
+import {globalStyles} from '../../styles/globalStyles';
+import TagComponent from '../../components/TagComponent';
+import SpaceComponent from '../../components/SpaceComponent';
+import CircularComponent from '../../components/CircularComponent';
+import CardImageContainer from '../../components/CardImageContainer';
+import AvatarGroup from '../../components/AvatarGroup';
+import ProgressBarComponent from '../../components/ProgressBarComponent';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}: any) {
   return (
     <View style={{flex: 1}}>
       <Container>
@@ -135,7 +135,7 @@ export default function HomeScreen() {
           marginBottom: 20,
         }}>
         <Pressable
-          onPress={() => console.log('hehehe')}
+          onPress={() => navigation.navigate('AddNewTask')}
           style={[
             globalStyles.row,
             {

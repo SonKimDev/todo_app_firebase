@@ -2,11 +2,12 @@ import {Platform, StyleSheet} from 'react-native';
 import {colors} from '../constants/colors';
 import {fontFamilies} from '../constants/fontFamilies';
 
+const ios = Platform.OS === 'ios';
+
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.bgColor,
-    paddingTop: Platform.OS === 'ios' ? 52 : 42,
   },
 
   row: {
@@ -24,8 +25,8 @@ export const globalStyles = StyleSheet.create({
   inputContainer: {
     backgroundColor: colors.gray,
     borderRadius: 12,
-    paddingHorizontal: Platform.OS === 'ios' ? 12 : 10,
-    paddingVertical: Platform.OS === 'ios' ? 12 : 10,
+    paddingHorizontal: ios ? 12 : 10,
+    paddingVertical: ios ? 12 : 10,
   },
 
   section: {
@@ -35,7 +36,7 @@ export const globalStyles = StyleSheet.create({
 
   tag: {
     paddingHorizontal: 20,
-    paddingVertical: Platform.OS === 'ios' ? 6 : 4,
+    paddingVertical: ios ? 6 : 4,
     borderRadius: 100,
     backgroundColor: colors.blue,
   },
