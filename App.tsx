@@ -1,6 +1,7 @@
-import {SafeAreaView, StatusBar} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import HomeScreen from './src/homes/HomeScreen';
+import { SafeAreaView, StatusBar } from 'react-native';
+import Router from './src/routers/Router';
 
 export default function App() {
   return (
@@ -10,7 +11,9 @@ export default function App() {
         barStyle={'light-content'}
         backgroundColor={'transparent'}
       />
-      <HomeScreen />
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
     </SafeAreaView>
   );
 }
