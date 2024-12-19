@@ -40,7 +40,7 @@ export default function HomeScreen({navigation}: any) {
           <RowComponent
             justifyContent="space-between"
             style={[globalStyles.inputContainer]}
-            onPress={() => {}}>
+            onPress={() => navigation.navigate('Search')}>
             <TextComponent color="#696B6F" text="Search" />
             <SearchNormal1 size={20} color={colors.desc} />
           </RowComponent>
