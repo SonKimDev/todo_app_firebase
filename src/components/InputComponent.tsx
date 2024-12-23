@@ -1,10 +1,12 @@
-import React, { ReactNode } from 'react';
-import { TextInput, TouchableOpacity, View } from 'react-native';
+import React, {ReactNode, useState} from 'react';
+import {TextInput, TouchableOpacity, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { colors } from '../constants/colors';
-import { globalStyles } from '../styles/globalStyles';
+import {colors} from '../constants/colors';
+import {globalStyles} from '../styles/globalStyles';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
+import TitleComponent from './TitleComponent';
+import {Eye, EyeSlash} from 'iconsax-react-native';
 
 interface Props {
   value: string;
@@ -15,6 +17,7 @@ interface Props {
   allowClear?: boolean;
   multiline?: boolean;
   numberOfLine?: number;
+  isPassword?: boolean;
   onChange: (val: string) => void;
 }
 
@@ -28,8 +31,11 @@ export default function InputComponent(props: Props) {
     allowClear,
     multiline,
     numberOfLine,
+    isPassword,
     onChange,
   } = props;
+
+  const [showPass, setShowPass] = useState(false);
 
   return (
     <View style={{marginBottom: 16}}>
@@ -39,9 +45,7 @@ export default function InputComponent(props: Props) {
           globalStyles.inputContainer,
           {
             marginTop: title ? 8 : 0,
-            minHeight: multiline && numberOfLine ? 32 * numberOfLine : 32,
-            paddingVertical: 14,
-            paddingHorizontal: 10,
+            minHeight: multiline && numberOfLine ? 60 * numberOfLine : 60,
             alignItems: multiline && numberOfLine ? 'flex-start' : 'center',
           },
         ]}>
@@ -53,15 +57,15 @@ export default function InputComponent(props: Props) {
             paddingRight: affix ? 8 : 0,
           }}>
           <TextInput
+            secureTextEntry={isPassword ? !showPass : false}
             multiline={multiline}
             numberOfLines={numberOfLine}
             style={[
               globalStyles.text,
               {
-                margin: 0,
-                padding: 0,
-                paddingVertical: 6,
                 flex: 1,
+                padding: 0,
+                margin: 0,
                 textAlignVertical: multiline && numberOfLine ? 'top' : 'center',
               },
             ]}
@@ -69,12 +73,23 @@ export default function InputComponent(props: Props) {
             placeholderTextColor={'#676767'}
             value={value}
             onChangeText={val => onChange(val)}
+            autoCapitalize="none"
           />
         </View>
         {affix && affix}
         {allowClear && value && (
           <TouchableOpacity onPress={() => onChange('')}>
             <AntDesign name="close" size={20} color={colors.white} />
+          </TouchableOpacity>
+        )}
+
+        {isPassword && (
+          <TouchableOpacity onPress={() => setShowPass(!showPass)}>
+            {showPass ? (
+              <EyeSlash size={20} color={colors.desc} />
+            ) : (
+              <Eye size={20} color={colors.desc} />
+            )}
           </TouchableOpacity>
         )}
       </RowComponent>

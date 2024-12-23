@@ -14,12 +14,13 @@ interface Props {
   back?: boolean;
   right?: ReactNode;
   children: ReactNode;
+  isScroll?: boolean;
 }
 
 const ios = Platform.OS === 'ios';
 
 export default function Container(props: Props) {
-  const {title, back, right, children} = props;
+  const {title, back, right, children, isScroll} = props;
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
   return (
@@ -50,7 +51,11 @@ export default function Container(props: Props) {
           )}
         </View>
       </RowComponent>
-      <ScrollView>{children}</ScrollView>
+      {isScroll ? (
+        <ScrollView>{children}</ScrollView>
+      ) : (
+        <View style={{flex: 1}}>{children}</View>
+      )}
     </View>
   );
 }
