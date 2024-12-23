@@ -1,13 +1,12 @@
+import auth from '@react-native-firebase/auth';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useEffect, useState} from 'react';
-import HomeScreen from '../screens/homes/HomeScreen';
-import AddNewTaskScreen from '../screens/tasks/AddNewTaskScreen';
-import SearchScreen from '../screens/SearchScreen';
-import auth from '@react-native-firebase/auth';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignUpScreen from '../screens/auth/SignUpScreen';
-import {Text, View} from 'react-native';
+import HomeScreen from '../screens/homes/HomeScreen';
 import LoadingScreen from '../screens/LoadingScreen';
+import SearchScreen from '../screens/SearchScreen';
+import AddNewTaskScreen from '../screens/tasks/AddNewTaskScreen';
 
 export default function Router() {
   const [isLogin, setIsLogin] = useState(false);

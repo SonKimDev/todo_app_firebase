@@ -1,3 +1,4 @@
+import {Eye, EyeSlash} from 'iconsax-react-native';
 import React, {ReactNode, useState} from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -5,8 +6,6 @@ import {colors} from '../constants/colors';
 import {globalStyles} from '../styles/globalStyles';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
-import TitleComponent from './TitleComponent';
-import {Eye, EyeSlash} from 'iconsax-react-native';
 
 interface Props {
   value: string;

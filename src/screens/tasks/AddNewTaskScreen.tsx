@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from '../../components/Container';
 import InputComponent from '../../components/InputComponent';
 import SectionComponent from '../../components/SectionComponent';
@@ -7,7 +7,9 @@ import {Button, View} from 'react-native';
 import DateTimePickerComponent from '../../components/DateTimePickerComponent';
 import RowComponent from '../../components/RowComponent';
 import SpaceComponent from '../../components/SpaceComponent';
-
+import DropDownPickerComponent from '../../components/DropDownPickerComponent';
+import {SelectModel} from '../../models/SelectModel';
+import firestore from '@react-native-firebase/firestore';
 const initValue: TaskModel = {
   title: '',
   description: '',
@@ -20,8 +22,29 @@ const initValue: TaskModel = {
 
 export default function AddNewTaskScreen({navigation}: any) {
   const [taskDetail, setTaskDetail] = useState<TaskModel>(initValue);
+  const [userSelect, setUserSelect] = useState<SelectModel[]>([]);
 
-  function handleChangeValue(id: string, value: string | Date) {
+  async function handleGetAllUser() {
+    await firestore()
+      .collection('users')
+      .get()
+      .then(snap => {
+        if (snap.empty) {
+          console.log(`users data not found`);
+        } else {
+          const items: SelectModel[] = [];
+          snap.forEach(item => {
+            items.push({
+              label: item.data().name,
+              value: item.id,
+            });
+          });
+          setUserSelect(items);
+        }
+      });
+  }
+
+  function handleChangeValue(id: string, value: string | string[] | Date) {
     const item: any = {...taskDetail};
 
     item[`${id}`] = value;
@@ -32,6 +55,11 @@ export default function AddNewTaskScreen({navigation}: any) {
   function handleAddNewTask() {
     console.log(taskDetail);
   }
+
+  useEffect(() => {
+    handleGetAllUser();
+  }, []);
+
   return (
     <Container back title="Add New Task">
       <SectionComponent>
@@ -78,6 +106,14 @@ export default function AddNewTaskScreen({navigation}: any) {
             />
           </View>
         </RowComponent>
+
+        <DropDownPickerComponent
+          selected={taskDetail.uids}
+          items={userSelect}
+          onSelect={val => handleChangeValue('uids', val)}
+          multiple
+          title="Members"
+        />
       </SectionComponent>
       <SectionComponent>
         <Button title="Save" onPress={handleAddNewTask} />
