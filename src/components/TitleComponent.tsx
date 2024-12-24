@@ -1,7 +1,7 @@
 import React from 'react';
-import TextComponent from './TextComponent';
+import {StyleProp, TextStyle} from 'react-native';
 import {fontFamilies} from '../constants/fontFamilies';
-import {StyleProp, TextStyle, ViewStyle} from 'react-native';
+import TextComponent from './TextComponent';
 
 interface Props {
   text: string;
@@ -9,18 +9,20 @@ interface Props {
   font?: string;
   color?: string;
   styles?: StyleProp<TextStyle>;
+  flex?: number;
 }
 
 export default function TitleComponent(props: Props) {
-  const {text, size, font, color, styles} = props;
+  const {text, size, font, color, styles, flex} = props;
 
   return (
     <TextComponent
       text={text}
-      size={size ?? 20}
-      font={font ?? fontFamilies.semiBold}
+      size={size ?? 16}
+      font={font ?? fontFamilies.bold}
       color={color}
       styles={styles}
+      flex={flex}
     />
   );
 }

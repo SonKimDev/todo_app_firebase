@@ -6,6 +6,7 @@ import {colors} from '../constants/colors';
 import {globalStyles} from '../styles/globalStyles';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
+import TitleComponent from './TitleComponent';
 
 interface Props {
   value: string;
@@ -38,7 +39,7 @@ export default function InputComponent(props: Props) {
 
   return (
     <View style={{marginBottom: 16}}>
-      {title && <TextComponent text={title} />}
+      {title && <TitleComponent text={title} />}
       <RowComponent
         style={[
           globalStyles.inputContainer,
