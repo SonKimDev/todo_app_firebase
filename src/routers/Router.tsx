@@ -7,6 +7,7 @@ import HomeScreen from '../screens/homes/HomeScreen';
 import LoadingScreen from '../screens/LoadingScreen';
 import SearchScreen from '../screens/SearchScreen';
 import AddNewTaskScreen from '../screens/tasks/AddNewTaskScreen';
+import TaskDetailScreen from '../screens/tasks/TaskDetailScreen';
 
 export default function Router() {
   const [isLogin, setIsLogin] = useState(false);
@@ -30,6 +31,7 @@ export default function Router() {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="AddNewTask" component={AddNewTaskScreen} />
+      <Stack.Screen name="TaskDetail" component={TaskDetailScreen} />
       <Stack.Screen name="Search" component={SearchScreen} />
     </Stack.Navigator>
   );
