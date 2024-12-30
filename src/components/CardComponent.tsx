@@ -1,6 +1,7 @@
 import React, {ReactNode} from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
 import {globalStyles} from '../styles/globalStyles';
+import {colors} from '../constants/colors';
 
 interface Props {
   children: ReactNode;
@@ -12,7 +13,12 @@ export default function CardComponent(props: Props) {
   const {children, bgColor, styles} = props;
 
   return (
-    <View style={[globalStyles.inputContainer, {padding: 12}, styles]}>
+    <View
+      style={[
+        globalStyles.inputContainer,
+        {padding: 12, backgroundColor: bgColor ?? colors.gray},
+        styles,
+      ]}>
       {children}
     </View>
   );

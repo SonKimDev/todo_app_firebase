@@ -1,11 +1,10 @@
-import {useNavigation} from '@react-navigation/native';
-import {ArrowLeft2} from 'iconsax-react-native';
-import React, {ReactNode} from 'react';
-import {Platform, ScrollView, TouchableOpacity, View} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {colors} from '../constants/colors';
-import {fontFamilies} from '../constants/fontFamilies';
-import {globalStyles} from '../styles/globalStyles';
+import { useNavigation } from '@react-navigation/native';
+import { ArrowLeft2 } from 'iconsax-react-native';
+import React, { ReactNode } from 'react';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
+import { colors } from '../constants/colors';
+import { fontFamilies } from '../constants/fontFamilies';
+import { globalStyles } from '../styles/globalStyles';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
 
@@ -17,14 +16,12 @@ interface Props {
   isScroll?: boolean;
 }
 
-const ios = Platform.OS === 'ios';
 
 export default function Container(props: Props) {
   const {title, back, right, children, isScroll} = props;
-  const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
   return (
-    <View style={[globalStyles.container, {paddingTop: ios ? top : top + 10}]}>
+    <View style={[globalStyles.container]}>
       <RowComponent
         style={{
           paddingHorizontal: 16,

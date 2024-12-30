@@ -6,7 +6,13 @@ import {globalStyles} from '../styles/globalStyles';
 import RowComponent from './RowComponent';
 import TextComponent from './TextComponent';
 
-export default function AvatarGroup() {
+interface Props {
+  uids?: string[];
+}
+
+export default function AvatarGroup(props: Props) {
+  const {uids} = props;
+
   const uidLength = 4;
   const images = 'https://cdn-icons-png.flaticon.com/512/3607/3607444.png';
   const imageStyle = {
